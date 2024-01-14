@@ -1,0 +1,353 @@
+@import './../../../mixins.scss';
+
+#{$homePage}Wrapper {
+
+    .MuiGrid2-container {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    // header css start
+    .header {
+        margin-top: 13px;
+        min-height: 639px;
+        position: relative;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1842 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.1'%3E%3Cpath d='M1841 14.8C1841 14.8 1783.5 28.6 1726 28.6C1668.5 28.6 1611 14.8 1611 14.8C1611 14.8 1553.5 1 1496 1C1438.5 1 1381 14.8 1381 14.8C1381 14.8 1323.5 28.6 1266 28.6C1208.5 28.6 1151 14.8 1151 14.8C1151 14.8 1093.5 1 1036 1C978.5 1 921 14.8 921 14.8C921 14.8 863.5 28.6 806 28.6C748.5 28.6 691 14.8 691 14.8C691 14.8 633.5 1 576 1C518.5 1 461 14.8 461 14.8C461 14.8 403.5 28.6 346 28.6C288.5 28.6 231 14.8 231 14.8C231 14.8 173.5 1 116 1C58.5 1 1 14.8 1 14.8' stroke='black'/%3E%3C/g%3E%3C/svg%3E");
+        // background: linear-gradient(100deg, #402, #006);
+        // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23000' stroke-width='1' opacity='.1'%3E%3Cpath d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3Cpath d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/%3E%3Cpath d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/%3E%3C/g%3E%3C/svg%3E%0A");
+        // background-position: 50% 50%;
+        animation: background-move 30s linear infinite;
+        background-size: 200%;
+        // background-size: unquote('max(100vw, 20em)') auto, 100% 100%;
+
+        h1 {
+            @include fontSize(26px);
+            font-weight: 300;
+            line-height: 34px;
+            color: $black;
+            margin-top: 5px;
+            text-align: center;
+            margin-bottom: 40px;
+
+            span {
+                font-weight: 700;
+                display: block;
+                line-height: 35px;
+                position: relative;
+
+                &:before {
+                    content: "";
+                    @include position(absolute, $bottom: -10px, $right: calc(48% - 110px));
+                    background: #F7931D;
+                    height: 4px;
+                    width: 237px;
+                    @include border-radius(10px);
+                    z-index: -1;
+                }
+            }
+        }
+
+        .product_sec {
+            height: 108px;
+            @include border-radius(20px);
+            padding: 16px;
+            position: relative;
+
+            h5 {
+                @include fontSize(16px);
+                line-height: 19px;
+                font-weight: 400;
+                color: $black;
+            }
+        }
+
+        $card-colors: (
+            "health",
+            #FBB147),
+            ("investment", #F7931D),
+            ("travel", #20366B),
+            ("term", #F97564),
+        ;
+        $k: 0;
+
+        @each $color in $card-colors {
+            $bacRightP: $k * 100;
+            $k: $k +1;
+
+            .#{nth($color,1)} {
+                background: nth($color, 2
+                );
+
+            &:before {
+                content: "";
+                @include position(absolute, $bottom: -13px, $right: 0px);
+                width: 100px;
+                height: 100px;
+                background: url("../../../../public/images/product_icons_four_mobile.svg")no-repeat -#{$bacRightP}px 0px/400px;
+            }
+        }
+    }
+
+    .car_product_sec {
+        @include border-radius(20px);
+        height: 100%;
+        padding: 16px;
+        position: relative;
+        background: $primary;
+
+        h5 {
+            @include fontSize(16px);
+            line-height: 19px;
+            font-weight: 400;
+            color: $white;
+        }
+
+        &::before {
+            @include position(absolute, $bottom: 0px, $right: 10px);
+            content: '';
+            background: url('../../../../public/images/car_product_icon_mobile.svg')no-repeat;
+            width: 130px;
+            height: 170px;
+        }
+    }
+
+    .bike_product_sec {
+        @include border-radius(20px);
+        height: 134px;
+        padding: 16px;
+        position: relative;
+        background: #FDC799;
+
+        h5 {
+            color: $black;
+            @include fontSize(16px);
+            line-height: 19px;
+            font-weight: 400;
+        }
+
+        &::before {
+            @include position(absolute, $bottom: 0px, $right: 0px);
+            content: '';
+            background: url('../../../../public/images/bike_product_icon_mobile.svg')no-repeat;
+            width: 130px;
+            height: 114px;
+        }
+    }
+
+    .others_product_sec {
+        margin-top: 32px;
+        background: #F1F1F1;
+        @include border-radius(8px);
+        padding: 12px;
+
+        ul {
+            display: flex;
+
+            li {
+                margin-right: 24px;
+                @include fontSize(14px);
+                line-height: 24px;
+                font-weight: 500;
+
+                a {
+                    color: #FAA51C;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}
+
+@keyframes background-move {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 100vw 0, 0 0;
+        background-position: unquote('max(100vw, 40em)') 0, 0 0;
+    }
+}
+
+// header css end
+
+// factsheet css start
+.factsheet_sec {
+    margin: 100px 0;
+
+    h2 {
+        @include fontSize(26px);
+        line-height: 28px;
+        color: $black;
+        font-weight: 500;
+        margin-bottom: 18px;
+    }
+
+    p {
+        @include fontSize(16px);
+        line-height: 24px;
+        color: $gray;
+        font-weight: 400;
+    }
+
+    .counter_sec {
+        padding: 20px 10px;
+        text-align: center;
+        background: #F4F4F4;
+        @include border-radius(20px);
+
+        h4 {
+            @include fontSize(28px);
+            line-height: 42px;
+            color: $black;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        p {
+            @include fontSize(16px);
+            line-height: 24px;
+            color: $gray;
+            font-weight: 400;
+        }
+    }
+}
+
+// factsheet css end
+
+// feature css start
+.feature_sec {
+    h2 {
+        @include fontSize(26px);
+        line-height: 32px;
+        color: $black;
+        font-weight: 500;
+        margin-bottom: 18px;
+    }
+
+    .divider {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .feature_desc {
+        img {
+            margin-bottom: 19px;
+        }
+
+        h5 {
+            @include fontSize(16px);
+            line-height: 23px;
+            color: $black;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        p {
+            @include fontSize(14px);
+            line-height: 20px;
+            color: $gray;
+            font-weight: 400;
+            margin-bottom: 0px;
+        }
+
+        &.new {
+
+            display: flex;
+            justify-content: center;
+
+            .inner {
+                width: 49%;
+            }
+        }
+    }
+}
+
+// feature css end
+
+// awards section css start
+
+.awards_sec {
+    margin-top: 100px;
+    background: #EEEEEE;
+    padding: 42px 0;
+
+
+    h3 {
+        @include fontSize(26px);
+        line-height: 32px;
+        color: $black;
+        font-weight: 500;
+        margin-bottom: 18px;
+    }
+
+    p {
+        @include fontSize(16px);
+        line-height: 25px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        text-align: justify;
+        color: $gray;
+    }
+}
+
+// awards section css end
+
+// customer review section css start
+.customer_review {
+    margin-top: 100px;
+
+    .top-heading {
+        position: relative;
+
+        &:before {
+            @include position(absolute, $bottom: 10px, $left: 10px);
+            content: "";
+            background: rgba(0, 0, 0, 0.4);
+            width: 95%;
+            height: 1px;
+        }
+
+        h2 {
+            @include fontSize(26px);
+            line-height: 32px;
+            color: $black;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+    }
+}
+
+// customer review section css end
+
+// our partner section start
+.our-partners-section {
+    margin: 100px 0;
+
+    .our_partners_inner {
+        position: relative;
+
+        &:before {
+            @include position(absolute, $bottom: 10px, $left: 10px);
+            content: "";
+            background: rgba(0, 0, 0, 0.4);
+            width: 95%;
+            height: 1px;
+        }
+
+        h2 {
+            @include fontSize(26px);
+            line-height: 32px;
+            font-weight: 500;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        // .divider {
+        //     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        // }
+    }
+}
+
+}

@@ -1,0 +1,529 @@
+@import "mixins.scss";
+
+.modalWrapper {
+    // display: flex;
+    // justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+
+    .MuiBackdrop-root {
+        background-color: rgba($grey-dark, 0.3) !important;
+    }
+
+    .modalInner {
+        margin: 0px auto;
+        padding: 52px 18px 20px;
+        max-width: 992px;
+        width: 100%;
+        outline: none;
+        border: none;
+
+        &.xsWidth {
+            max-width: 320px;
+        }
+
+        &.smWidth {
+            max-width: 520px;
+        }
+
+        &.mdWidth {
+            max-width: 770px;
+        }
+        &.mobile_form_padding{
+        padding: 52px 0px 20px;
+        }
+
+        .modalContent {
+            background: #fff;
+            @include border-radius(16px);
+            @include box-shadow(0px 8px 16px rgba(0, 0, 0, 0.25));
+            padding: 20px;
+            position: relative;
+            max-width: 992px;
+            width: 100%;
+
+            &.smWidth {
+                max-width: 320px;
+            }
+
+            &.mdWidth {
+                max-width: 770px;
+            }
+            &.modalContent_mobile{
+                padding: 20px 12px;
+            }
+        }
+
+        .dateRange-bg {
+            background: #F1F6FF;
+            border: 1px solid #E5E7FE;
+            border-radius: 8px;
+        }
+
+        .add-button {
+            background: #1EBC96;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: "Poppins";
+            font-weight: 400;
+            line-height: 14px;
+            text-transform: capitalize;
+            padding: 8px 22px 8px 22px;
+            height: 48px;
+            position: relative;
+        }
+
+        .remove-button {
+            background: #EB5757;
+            ;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 14px;
+            text-transform: capitalize;
+            padding: 8px 22px 8px 22px;
+            height: 48px;
+            margin-left: 130px;
+        }
+
+        .selector {
+            display: flex;
+            height: 38px;
+            max-width: 360px;
+            // align-items: center;
+            // justify-content: center;
+            font-family: "Montserrat";
+            font-size: 14px;
+            line-height: 17px;
+            color: #000;
+            position: relative;
+
+            &:after {
+                border-radius: 10px;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                content: "";
+                border: 1px solid #000;
+                width: calc(100% - 4px);
+                height: calc(100% - 2px);
+                z-index: 0;
+            }
+
+            button {
+                position: relative;
+                z-index: 1;
+                font-family: "Montserrat";
+                font-size: 14px;
+                text-transform: capitalize;
+            }
+
+            .selection {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                height: 100%;
+                width: 100%; // to flexbox this will keep all widths the same. flexbox is just funny like that.
+                margin-left: -1px;
+                background-clip: border-box;
+                transform: scale3d(1, 1, 1); // weird hack to prevent pixel-y borders
+                font-family: "Montserrat";
+                font-size: 14px;
+                line-height: 17px;
+                background: rgba(172, 212, 251, 1);
+                color: #000;
+                transition: 0.15s ease-in-out background-color;
+
+                &.selected {
+                    background: transparent !important;
+                    z-index: 2;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #000;
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    background: rgba(172, 212, 251, 1);
+                }
+
+                // add some borders!
+                &:first-child {
+                    margin-left: 0;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                &:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+            }
+        }
+
+        .selector.width-per-item {
+            // width: auto;
+            margin: 0px auto;
+
+            .selection,
+            button {
+                //min-width: 185px;
+                max-width: 100%;
+                width: 190px;
+                padding: 0px 10px;
+                font-weight: 500;
+            }
+        }
+
+        .dialpad-number {
+            justify-content: center;
+            display: flex;
+            border: 1px solid #e5e7fe;
+            border-radius: 8px;
+            padding: 5px 0;
+            background: #f1f6ff;
+            height: 40px;
+
+            p {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 30px;
+            }
+        }
+
+        .dialpad {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            // max-width: 210px;
+            li {
+                margin: 0 5px 15px;
+                list-style-type: none;
+                background: #ffffff;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                padding: 15px 24px;
+                cursor: pointer;
+
+                a {
+                    text-decoration: none;
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .searchSection {
+        .searchField {
+            background: transparent;
+            border: none;
+            @include fontSize(16px);
+            height: 40px;
+            width: 100%;
+
+            &:focus,
+            &:focus-visible {
+                outline: none;
+            }
+        }
+
+        .searchProductType {
+            min-height: 16px;
+            // padding: 6px 0px 10px;
+
+            button {
+                border: none;
+                padding: 2px 4px;
+                text-transform: capitalize;
+                font-weight: 400;
+                margin-right: 12px;
+
+                &.Mui-selected {
+                    background: transparent;
+                    color: $primary-color;
+                }
+            }
+        }
+
+        .resultTitle {
+            border-top: 1px solid $text-light;
+            border-bottom: 1px solid $text-light;
+            font-weight: 500;
+            padding: 8px 0px;
+            margin-top: 8px;
+
+        }
+
+        .allResults {
+            margin-top: 0px;
+            max-height: 360px;
+            min-height: 160px;
+            overflow-y: auto;
+        }
+
+        .searchResult {
+            text-decoration: none;
+
+            h5 {
+                @include fontSize(16px);
+                color: $grey-dark;
+
+            }
+
+            ul {
+                display: flex;
+                margin: 0px;
+                padding: 0px 0px 0px 12px;
+
+                li {
+                    list-style-type: square;
+                    @include fontSize(12px);
+                    color: $grey-light;
+                    padding-right: 24px;
+                }
+            }
+        }
+    }
+
+    .popupTitle {
+        font-weight: 500;
+        @include fontSize(14px);
+        line-height: 14px;
+        margin-bottom: 0px;
+    }
+
+    .hrLine {
+        border: none;
+        @include box-shadow(0px 6px 8px -6px rgba($grey-dark, 0.2));
+        margin-bottom: 24px;
+        height: 20px;
+        width: 100%;
+
+    }
+
+    .title_lg {
+        font-weight: 700;
+        @include fontSize(28px);
+        line-height: 54px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        span {
+            color: #F7A61D;
+            padding-left: 5px;
+        }
+    }
+
+    .mobile_title_lg {
+        @extend .title_lg;
+        @include fontSize(22px);
+    }
+
+    .sectionTitle {
+        font-weight: 700;
+        @include fontSize(14px);
+        line-height: 22px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .businesstype {
+        font-family: 'Poppins';
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
+        color: #3A4855;
+        margin-bottom: 0px;
+    }
+
+    .steps {
+        @include fontSize(14px);
+        font-weight: 600;
+        margin-bottom: 28px;
+
+        span {
+            color: $grey-light;
+            font-weight: 400;
+        }
+    }
+    .back{
+        width: 34px;
+        height: 34px;
+        border: 1px solid #f2f2f2;
+        display: inline-block;
+        border-radius: 50%;
+        position: relative;
+        margin-right:12px;
+        &:before{
+          @include abs-position(5px, null, null, 5px);
+          content: '';
+          background: url('../public/images/popup_back_btn.svg') no-repeat;
+          width:22px;
+          height:22px
+        }
+      }
+
+    .backStep {
+        display: inline-block;
+        position: relative;
+        $size: 22px;
+        height: $size;
+        width: $size;
+        margin-right: 8px;
+
+        &:before,
+        &:after {
+            background-color: $grey-dark;
+            @include border-radius(8px);
+            content: "";
+            @include abs-position(7px, null, null, 0px);
+            $width: 12px;
+            $height: 2.5px;
+            height: $height;
+            width: $width;
+            transform: rotate(-45deg);
+            transition: all 0.5s ease;
+
+        }
+
+        &:after {
+            transform: rotate(-135deg);
+            top: 14px;
+        }
+
+        &:hover {
+
+            &:before,
+            &:after {
+                background: $primary-orange;
+                left: -4px;
+            }
+        }
+    }
+
+    .closeModal {
+        background: $primary-red;
+        color: #fff;
+        @include border-radius(8px);
+        $size: 35px;
+        height: $size;
+        width: $size;
+        position: relative;
+        box-sizing: border-box;
+        line-height: $size;
+        transition: all 0.3s ease;
+
+        &:before,
+        &:after {
+            $width: 16px;
+            $height: 1.5px;
+            transform: rotate(-45deg);
+            content: "";
+            position: absolute;
+            right: 9px;
+            top: 17px;
+            height: $height;
+            width: $width;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        &:after {
+            transform: rotate(-135deg);
+        }
+
+        &:hover {
+            background: $primary-red;
+            @include border-radius(20px);
+            @include box-shadow(0px 8px 12px rgba($primary-red, 0.4));
+
+            &:before {
+
+                transform: rotate(0deg);
+            }
+
+            &:after {
+
+                transform: rotate(-180deg);
+            }
+        }
+    }
+
+    .close-button {
+        background: $white;
+        @include border-radius(50px);
+        @include position(absolute, $right: 20px, $top: 26px);
+        $size: 36px;
+        height: $size;
+        width: $size;
+        box-sizing: border-box;
+        line-height: $size;
+        z-index: 99;
+        border: 1px solid red;
+
+        &:before,
+        &:after {
+            $width: 16px;
+            $height: 1.5px;
+            transform: rotate(-45deg);
+            content: "";
+            @include position(absolute, $right: 9px, $top: 17px);
+            height: $height;
+            width: $width;
+            background-color: red;
+        }
+
+        &:after {
+            transform: rotate(-135deg);
+        }
+
+        &:hover {
+            background: red;
+            border: 1px solid red;
+
+            &:before,
+            &:after {
+
+                background-color: $white;
+            }
+        }
+    }
+
+    .close-button_mobile {
+        @extend .close-button;
+        @include position(absolute, $right: 13px, $top: 36px);
+        $size: 26px;
+        height: $size;
+        width: $size;
+
+        &:before,
+        &:after {
+            @include position(absolute, $right: 4px, $top: 12px);
+        }
+    }
+
+    .yesBtn {
+        background: #fff;
+        @include border-radius(8px);
+        @include box-shadow(0px 0px 12px rgba(0, 0, 0, 0.15));
+        color: #000;
+        padding: 4px 16px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        text-decoration: none;
+    }
+
+    .noBtn {
+        @extend .yesBtn;
+        color: #fff;
+        background: $primary-color;
+    }
+    .newlink{
+        color: $primary;
+        font-weight: 700;
+    }
+
+}

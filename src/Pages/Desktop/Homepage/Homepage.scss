@@ -1,0 +1,492 @@
+@import './../../../mixins.scss';
+
+#{$homePage}Wrapper {
+    min-height: 100vh;
+    padding-top: 70px;
+
+
+    .header_outer {
+        min-height: 710px;
+        position: relative;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1842 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.1'%3E%3Cpath d='M1841 14.8C1841 14.8 1783.5 28.6 1726 28.6C1668.5 28.6 1611 14.8 1611 14.8C1611 14.8 1553.5 1 1496 1C1438.5 1 1381 14.8 1381 14.8C1381 14.8 1323.5 28.6 1266 28.6C1208.5 28.6 1151 14.8 1151 14.8C1151 14.8 1093.5 1 1036 1C978.5 1 921 14.8 921 14.8C921 14.8 863.5 28.6 806 28.6C748.5 28.6 691 14.8 691 14.8C691 14.8 633.5 1 576 1C518.5 1 461 14.8 461 14.8C461 14.8 403.5 28.6 346 28.6C288.5 28.6 231 14.8 231 14.8C231 14.8 173.5 1 116 1C58.5 1 1 14.8 1 14.8' stroke='black'/%3E%3C/g%3E%3C/svg%3E");
+        animation: background-move 30s linear infinite;
+        background-size: 100%;
+
+        .MuiGrid2-container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+
+            .header {
+
+                h1 {
+                    @include fontSize(52px);
+                    line-height: 69px;
+                    color: $black;
+                    margin-top: 50px;
+                    text-align: center;
+                    margin-bottom: 60px;
+                    font-weight: 300;
+
+                    span {
+                        font-weight: 700;
+                        display: block;
+                        position: relative;
+
+                        &:before {
+                            content: "";
+                            @include position(absolute, $bottom: 4px, $right: calc(48% - 220px));
+                            background: #F7931D;
+                            height: 4px;
+                            width: 430px;
+                            border-radius: 10px;
+                            z-index: -1;
+                        }
+                    }
+                }
+
+                .product_outer {
+                    position: relative;
+
+                    .product_sec {
+                        height: 180px;
+                        @include border-radius(20px);
+                        padding: 20px 24px;
+                        position: relative;
+
+                        &:hover {
+                            animation: bubble-effect 4s linear infinite;
+                            overflow: hidden;
+                        }
+
+                        @keyframes bubble-effect {
+
+                            0%,
+                            100% {
+                                border-radius: 13% 17% 28% 12% / 20% 17% 13% 23%;
+                            }
+
+                            30% {
+                                border-radius: 18% 22% 20% 10% / 28% 30% 20% 12%;
+                            }
+
+                            60% {
+                                border-radius: 17% 13% 20% 10% / 26% 17% 13% 14%;
+                            }
+                        }
+
+                        h5 {
+                            @include fontSize(20px);
+                            line-height: 24px;
+                            font-weight: 400;
+                            color: #000;
+                        }
+                    }
+
+                    $card-colors: ("health", #FBB147), ("term", #F97564),("bike", #FDC799),("investment", #F7931D);
+                    
+                    $k: 0;
+                    @each $color in $card-colors {
+                        $bacRightP: $k * 180;
+                        $k: $k +1;
+
+                        .#{nth($color,1)} {
+                            background: nth($color, 2);
+
+                            &:before {
+                                content: "";
+                                @include position(absolute, $bottom: 0px, $right: 0px);
+                                width: 180px;
+                                height: 180px;
+                                background: url("../../../../public/images/product_icons_four.svg")no-repeat -#{$bacRightP}px 0px/720px;
+                            }
+                        }
+                    }
+
+                    .car_product_sec {
+                        @include border-radius(20px);
+                        height: 100%;
+                        padding: 20px 24px;
+                        position: relative;
+                        background: #24488C;
+
+                        h5 {
+                            color: $white;
+                            font-weight: 400;
+                            @include fontSize(20px);
+                            line-height: 24px;
+                        }
+
+                        &::before {
+                            @include position(absolute, $bottom: 0px, $right: 0px);
+                            content: '';
+                            background: url('../../../../public/images/car_product_icon.svg')no-repeat;
+                            width: 230px;
+                            height: 273px;
+                        }
+
+                        &:hover {
+                            animation: bubble-effect 4s linear infinite;
+                            overflow: hidden;
+                        }
+
+                        @keyframes bubble-effect {
+
+                            0%,
+                            100% {
+                                border-radius: 13% 17% 28% 12% / 20% 17% 13% 23%;
+                            }
+
+                            30% {
+                                border-radius: 18% 22% 20% 10% / 28% 30% 20% 12%;
+                            }
+
+                            60% {
+                                border-radius: 17% 13% 20% 10% / 26% 17% 13% 14%;
+                            }
+                        }
+                    }
+
+                    .travel_product_sec {
+                        @include border-radius(20px);
+                        height: 180px;
+                        padding: 20px 24px;
+                        position: relative;
+                        background: #20366B;
+
+                        @media (max-width:991px) {
+                            margin-bottom: 24px;
+                        }
+
+                        h5 {
+                            color: $white;
+                            font-weight: 400;
+                            position: relative;
+                            top: 35%;
+                            @include fontSize(20px);
+                            line-height: 24px;
+                        }
+
+                        &::before {
+                            @include position(absolute, $bottom: 0px, $right: 0px);
+                            content: '';
+                            background: url('../../../../public/images/travel_product_icon.svg')no-repeat;
+                            width: 263px;
+                            height: 169px;
+                        }
+
+                        &:hover {
+                            animation: bubble-effect 4s linear infinite;
+                            overflow: hidden;
+                        }
+
+                        @keyframes bubble-effect {
+
+                            0%,
+                            100% {
+                                border-radius: 13% 17% 28% 12% / 20% 17% 13% 23%;
+                            }
+
+                            30% {
+                                border-radius: 18% 22% 20% 10% / 28% 30% 20% 12%;
+                            }
+
+                            60% {
+                                border-radius: 17% 13% 20% 10% / 26% 17% 13% 14%;
+                            }
+                        }
+                    }
+                }
+
+                .others_product_sec {
+                    margin-top: 32px;
+                    background: #F1F1F1;
+                    @include border-radius(8px);
+                    padding: 12px;
+
+                    ul {
+                        display: flex;
+
+                        li {
+                            margin-right: 24px;
+                            @include fontSize(14px);
+                            line-height: 24px;
+                            font-weight: 500;
+
+                            a {
+                                color: #FAA51C;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @keyframes background-move {
+        0% {
+            background-position: 0 0, 0 0;
+        }
+
+        100% {
+            background-position: 100vw 0, 0 0;
+            background-position: unquote('max(100vw, 40em)') 0, 0 0;
+        }
+    }
+
+    .factsheet {
+        margin-top: 120px;
+
+        .MuiGrid2-container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+
+            h2 {
+                @include fontSize(30px);
+                line-height: 42px;
+                color: #000;
+                font-weight: 500;
+                font-style: italic;
+                margin-bottom: 12px;
+            }
+
+            p {
+                @include fontSize(20px);
+                line-height: 24px;
+                color: #999999;
+                font-weight: 400;
+            }
+
+            .counter_sec {
+                padding: 20px 10px;
+                text-align: center;
+                background: #F4F4F4;
+                @include border-radius(20px);
+
+                h4 {
+                    @include fontSize(28px);
+                    line-height: 42px;
+                    color: #000;
+                    font-weight: 500;
+                    font-style: italic;
+                }
+
+                p {
+                    @include fontSize(16px);
+                    line-height: 24px;
+                    color: #999999;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .feature_sec{
+        margin-top: 150px;
+        .MuiGrid2-container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            h2{
+                @include fontSize(30px);
+                line-height: 42px;
+                color: #000;
+                font-weight: 500;
+                margin-bottom: 20px;
+                font-family: 'Gotham';
+            }
+            .divider{
+                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            }
+            .feature_desc{
+                span{
+                  display: block;
+                  position:relative;
+                  height: 60px;
+                  img{
+                    width: 50px;
+                    height: 50px;
+                  }
+                }
+                $dashicons: icon1, icon2, icon3;
+                $k: 0;
+            
+                @each $icons in $dashicons {
+                  $bacRightP: $k * 39;
+                  $k: $k + 1;
+            
+                  .#{$icons} {
+                    &:before {
+                      content: "";
+                      @include position(absolute, $left: 0, $top: 0px);
+                      width: 39px;
+                      height: 47px;
+                      background: url("../../../../public/images/feature_imgs.svg")no-repeat -#{$bacRightP}px 0px/117px;
+                      
+                    }
+                  }
+                }
+                h5{
+                  @include fontSize(16px);
+                  line-height: 23px;
+                  color: #000;
+                  font-weight: 700;
+                  margin-bottom: 12px;
+                }
+                p{
+                  @include fontSize(14px);
+                  line-height: 20px;
+                  color: #999999;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    .awards_sec_outer{
+        margin-top: 150px;
+        background: #F4F4F4;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        .MuiGrid2-container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            h3{
+                @include fontSize(30px);
+                line-height: 42px;
+                color: #000;
+                font-weight: 500;
+                margin-bottom: 0px;
+              }
+              p{
+                @include fontSize(16px);
+                line-height: 25px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                text-align: justify;
+              }
+              .divider{
+                border: 1px solid rgba(0, 0, 0, 0.1);
+              }
+        }
+    }
+    
+    .customer_review{
+        margin-top: 120px;
+        .MuiGrid2-container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            
+            .top-heading{
+              position: relative;
+              &:before{
+                @include position(absolute, $bottom: -16px, $left: 0px);
+                content: "";
+                background: rgba(0, 0, 0, 0.4);
+                width: 50%;
+                height: 1px;
+              }
+              h2{
+                @include fontSize(30px);
+                line-height: 42px;
+                color: #000;
+                font-weight: 500;
+                margin-bottom: 16px;
+              }
+            }
+            .review_div{
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(255, 255, 255, 0.04);
+                @include border-radius(20px);
+                padding: 20px;
+                max-width: 486px;
+                display: flex;
+                align-items: center;
+                position: relative;
+                @media (max-width:1400px){
+                  max-width: 400px;
+                }
+                span{
+                  img{
+                    border-radius: 50%;
+                    width:75px;
+                    height:75px;
+                  }
+                }
+                p{
+                  @include fontSize(14px);
+                  line-height: 20px;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  text-align: justify;
+                  margin-left: 34px;
+                }
+                &.excellent, &.happy{
+                  &:before{
+                    top: -20px;
+                  }
+                }
+              }
+              $dashicons: excellent, happy, good, superb;
+              $k: 0;
+          
+              @each $icons in $dashicons {
+                $bacRightP: $k * 50;
+                $k: $k + 1;
+          
+                .#{$icons} {
+                  &:before {
+                    content: "";
+                    @include position(absolute, $right: -20px, $bottom: -20px);
+                    width: 50px;
+                    height: 50px;
+                    background: url("../../../../public/images/review_icons.svg")no-repeat -#{$bacRightP}px 0px/200px;
+                    
+                  }
+                }
+            }
+        }
+    }
+
+    .partners_section{
+        margin-top: 120px; 
+        .MuiGrid2-container {
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            h2{
+                @include fontSize(30px);
+                line-height: 42px;
+                color: #000;
+                font-weight: 700;
+                margin-bottom: 0px;
+                text-align: center;
+              }
+              .partnersLogo {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                li {
+                  background: rgba($black, 0.1);
+                  @include border-radius(10px);
+                  padding: 10px 40px;
+                  margin: 15px;
+                  width: 14%;
+                  &:hover {
+                    background: $white;
+                    @include box-shadow(0px 5px 20px rgba($black, 0.15));
+                  }
+                  img {
+                    width: 100%;
+                    max-width: 120px; 
+                    height: 65px;
+                  }
+                }
+            }
+        }
+    }
+}

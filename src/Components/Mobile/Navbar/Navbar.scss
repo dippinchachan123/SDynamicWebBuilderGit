@@ -1,0 +1,289 @@
+@import './../../../mixins.scss';
+
+.navbar {
+    height: 56px;
+    background: $white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+    padding: 12px 0;
+
+    .logo {
+        width: 122px;
+    }
+
+    .menu-btn {
+        background: #EDEBEB;
+        color: $black;
+        border: none;
+        padding: 0px 9.5px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        width: 32px;
+        position: relative;
+        @include border-radius(50px);
+        // margin-top: 5px;
+
+        .iconbars {
+            width: 10px;
+            background: $black;
+            display: block;
+            height: 2px;
+            position: absolute;
+            right: 0px;
+            left: 8px;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            margin: 0 auto;
+
+            &:after {
+                @extend .iconbars;
+                content: "";
+                top: -5px;
+                width: 18px;
+                left: -9px;
+            }
+
+            &:before {
+                @extend .iconbars;
+                content: "";
+                bottom: -5px;
+                width: 18px;
+                left: -9px;
+            }
+        }
+    }
+
+    .menuList {
+        // background: rgba($theme-secondary, 0.1);
+        @include position(fixed, $right: 0px, $top: 0px);
+        height: 100%;
+        width: 100%;
+        z-index: 99;
+        background: $white;
+
+
+        hr {
+            margin: 0;
+            border-top: 1px solid #ffe1d2 !important;
+        }
+
+        .sidemenu {
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            background: $white;
+            @include position(absolute, $right: -414px, $top: 0px);
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 100%;
+            width: 100%;
+            background: #EEEEEE;
+
+
+            &.right-open {
+                right: 0;
+            }
+
+            .btn,
+            a {
+                display: inline-block;
+                @include fontSize(14px);
+                line-height: 25px;
+                color: $black;
+            }          
+        }
+    }
+}
+
+.sliding-panel-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    &.active {
+        z-index: 999;
+        background-color: rgba(0, 0, 0, 0.3);
+
+        // will-change: transform;
+        body {
+            overflow: hidden;
+        }
+
+        .panel {
+            // transition: transform 1s ;
+            animation: inpanel 0.6s both;
+        }
+
+        @keyframes inpanel {
+            0% {
+                transform: translateX(1000px);
+            }
+
+            100% {
+                transform: translateX(0px);
+            }
+        }
+    }
+
+    .glass {
+        min-width: calc(100vw - 700px);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+    }
+
+    .panel {
+        height: 100%;
+        width: 100%;
+        max-width: 700px;
+        background-color: #eeeeee;
+        animation: outpanel 0.3s both;
+        padding: 24px 12px;
+    }
+
+    @keyframes outpanel {
+        0% {
+            transform: translateX(0px);
+        }
+
+        100% {
+            transform: translateX(1000px);
+        }
+    }
+
+    .panel-content {
+        // padding: 0px 12px;
+
+        svg[data-testid="CloseIcon"] {
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: rotate(-90deg);
+                color: $primary;
+            }
+        }
+    }
+}
+
+.slide_popup {
+    .close {
+        border: 1px solid #EB5757;
+        @include border-radius(9px);
+        opacity: 1;
+        display: inline-block;
+        transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+        cursor: pointer;
+        height: 27px;
+        width: 27px;
+        background: #EB5757 url("../../../../public/images/white-cross_mobile.svg") no-repeat 8px 8px/10px;
+        z-index: 9;
+        position: absolute;
+        right: 24px;
+        top: 12px;
+
+        &:hover {
+            transform: rotate(180deg);
+            border: 1px solid #EB5757;
+            background: #EB5757 url("../../../../public/images/white-cross_mobile.svg") no-repeat 8px 8px/10px;
+        }
+    }
+
+    .nav-item {
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: '';
+            background: rgba(0, 0, 0, 0.15);
+            height: 2px;
+            width: 357px;
+            bottom: 0;
+            left: calc(50% - 175px);
+        }
+
+        .nav-link {
+            padding: 8px 13px;
+            color: $black;
+            @include fontSize(14px);
+            line-height: 25px;
+            font-weight: 500;
+            display: inline-block;
+            position: relative;
+
+            a {
+                color: $black !important;
+            }
+
+            &.dropdown:before {
+                position: absolute;
+                top: 17px;
+                right: -13px;
+                background: url("../../../../public/images/dropdown-icon_mobile.svg") no-repeat 0px 0px/11px;
+                content: "";
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        .dropdown-menu {
+            position: relative;
+            border: none;
+            @include fontSize(10px);
+            padding: 0 5px !important;
+            width: 190px;
+            background: transparent;
+
+            .dropdown-menu[data-bs-popper] {
+                margin-top: 0px;
+            }
+
+            .dropdown-item {
+                padding: 0.25rem 9px !important;
+                @include fontSize(14px);
+                line-height: 25px;
+
+                a {
+                    color: $black !important;
+                }
+
+                &:focus {
+                    background-color: $theme-secondary !important;
+                }
+
+                &:hover {
+                    background-color: transparent !important;
+                }
+            }
+        }
+    }
+
+    .navbar_login {
+        display: flex;
+        justify-content: end;
+
+        .login_btn {
+            color: $white !important;
+            background: $primary;
+            @include fontSize(14px);
+            line-height: 13px;
+            font-weight: 400;
+            display: inline-block;
+            @include border-radius(40px);
+            position: relative;
+            padding: 10px 15px 10px 32px !important;
+
+
+            &:before {
+                content: '';
+                background: url("../../../../public/images/login_arrow_mobile.svg") no-repeat;
+                position: absolute;
+                height: 12px;
+                width: 12px;
+                top: 11px;
+                left: 16px;
+            }
+        }
+    }
+
+
+}

@@ -1,0 +1,453 @@
+@import "../../mixins.scss";
+
+.inputField {
+  position: relative;
+  background: $white;
+  @include border-radius(8px);
+  &.regnoField{
+    background: #fff url("../../../public/images/ind.svg") no-repeat 0px 0px/37px;
+    input{
+      padding-left: 45px;
+      font-weight: 700;
+    }
+  }
+  
+  
+
+  label,
+  input {
+    font-weight: 400;
+    letter-spacing: 0px;
+    @include fontSize(14px);
+    font-family: 'Gotham';
+  }
+
+  label {
+    transform: translate(14px, 14px) scale(1);
+    top: 2px;
+    color: $black;
+  }
+
+  svg {
+    display: none;
+  }
+
+  input {
+    // height: 20px;
+    @include border-radius(4px);
+    background: transparent;
+    padding: 15px 14px;
+  }
+
+  .MuiInputBase-root {
+    // @include box-shadow(0px 3px 6px rgba($black, 0.1));
+    @include border-radius(8px);
+  }
+
+  .MuiAutocomplete-root {
+    &:before {
+      @include position(absolute, $right: 10px, $top: 22px);
+      content: "";
+      border: solid $black;
+      border-width: 0px 0px 1.4px 1.4px;
+      transform: rotate(-45deg);
+      transition: all 0.3s ease;
+      transform-origin: center;
+      height: 6px;
+      width: 6px;
+    }
+
+    .MuiAutocomplete-inputRoot {
+      @include border-radius(8px);
+      padding: 0px 0px 0px 8px;
+      height: 50px;
+    }
+
+    .MuiAutocomplete-clearIndicator {
+      background: $white;
+      height: 18px;
+      width: 18px;
+      border: 1px solid #ccc;
+
+      svg {
+        display: block;
+        height: 12px;
+        color: $secondary;
+      }
+    }
+  }
+
+  .MuiFormControl-fullWidth {
+
+    .MuiNativeSelect-root {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      @include border-radius(8px);
+      font-weight: 500;
+
+    
+
+      &:hover {
+        border-color: $black;
+      }
+
+      &.MuiInputBase-root {
+        margin-top: 0;
+      }
+
+      .MuiNativeSelect-select {
+        padding: 13.5px 14px;
+
+        &:hover {
+          border-bottom: none !important;
+        }
+      }
+
+      &:before {
+        border-bottom: none !important;
+      }
+
+      &:after {
+        @include position(absolute, $left: 138px, $top: 22px);
+        content: "";
+        border: solid $black;
+        border-width: 0px 0px 1.4px 1.4px;
+        transform: rotate(-45deg);
+        transition: all 0.3s ease;
+        transform-origin: center;
+        height: 6px;
+        width: 6px;
+      }
+    }
+
+    .MuiNativeSelect {
+      text-align: left;
+      padding: 13.5px 14px;
+      @include fontSize(14px);
+      @include border-radius(8px);
+    }
+  }
+
+  .MuiAutocomplete-endAdornment {
+    display: none;
+  }
+
+  .MuiAutocomplete-hasClearIcon {
+    .MuiFormControl-root {
+      .MuiOutlinedInput-root {
+        height: auto;
+        @include border-radius(8px);
+        padding: 8px 0px 8px 8px;
+
+        .MuiButtonBase-root {
+          height: 20px;
+
+          &.MuiAutocomplete-clearIndicator {
+            display: none;
+          }
+
+          .MuiChip-label {
+            @include fontSize(10px);
+          }
+
+          &#ArrowDropDownIcon {
+            display: none !important;
+          }
+
+          svg {
+            display: block;
+          }
+
+          .MuiTouchRipple-root {
+            display: none;
+          }
+
+          .MuiChip-deleteIcon {
+            color: rgba(0, 0, 0, 0.26);
+            @include fontSize(18px);
+            cursor: pointer;
+            margin: 0px 2px 0 -6px;
+          }
+        }
+
+        .MuiAutocomplete-input {
+          min-width: 0px !important;
+        }
+      }
+    }
+  }
+
+  .MuiAutocomplete-popper {
+    // @include box-shadow(0px 4px 12px rgba(0, 0, 0, 0.2) !important);
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12) !important;
+    @include border-radius(0px 0px 8px 8px);
+    // z-index: 999;
+
+    .MuiAutocomplete-paper {
+      @include box-shadow(0px 4px 12px rgba(0, 0, 0, 0));
+    }
+
+    ul {
+      // @include box-shadow(0px 4px 12px rgba(0,0,0,0.2));
+      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+      max-height: 244px;
+      overflow-y: auto;
+      // z-index: 999;
+    }
+
+    li {
+      @include fontSize(14px);
+      line-height: 16px;
+    }
+  }
+
+  .MuiInputLabel-shrink {
+    color: $secondary !important;
+    transform: translate(14px, -9px) scale(0.75);
+    background: $white;
+  }
+
+  .MuiSelect-select {
+    text-align: left;
+    padding: 13.5px 14px;
+    @include fontSize(14px);
+    @include border-radius(8px);
+
+    &:before {
+      @include position(absolute, $right: 10px, $top: 20px);
+      content: "";
+      border: solid $black;
+      border-width: 0px 0px 1.4px 1.4px;
+      transform: rotate(-45deg);
+      transition: all 0.3s ease;
+      transform-origin: center;
+      height: 6px;
+      width: 6px;
+    }
+  }
+
+  .Mui-focused {
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #6b62dc !important;
+    }
+
+    .MuiSelect-select {
+      &:before {
+        border: solid $primary;
+        border-width: 0px 0px 1.4px 1.4px;
+        transform: rotate(-223deg);
+        top: 24px;
+      }
+    }
+  }
+
+  fieldset {
+    border-color: rgba(0, 0, 0, 0.1);
+    @include border-radius(8px);
+    border-width: 1px !important;
+    font-weight: 500;
+  }
+
+  .error {
+    color: $secondary;
+    @include fontSize(11px);
+    text-align: right;
+    @include position(absolute, $right: 0px, $bottom: -16px);
+  }
+}
+
+.MuiMenu-paper {
+  max-height: 200px !important;
+
+  .MuiMenu-list {
+    .MuiMenuItem-root {
+      @include fontSize(14px);
+    }
+  }
+}
+.MuiFormControl-root{
+  width: 100%;
+}
+.solidBtn {
+  .regular {
+    background: $primary;
+    @include border-radius(8px);
+    color: #fff;
+    @include fontSize(16px);
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: capitalize;
+    padding: 8px 32px;
+    height: 48px;
+
+    &:hover {
+      background: #ffff;
+      border: 1px solid $primary;
+      padding: 7px 31px;
+      color: $primary;
+      height: 48px;
+    }
+  }
+}
+
+
+
+.switch-field {
+  margin: 10px 0 15px;
+  width : 300px;
+
+  input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+  }
+
+  label {
+    background-color: $white;
+    color: #000;
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+    padding: 12px 20px;
+    margin-right: -5px;
+    border: 1px solid $primary;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  input:checked+label {
+    background-color: $primary;
+    box-shadow: none;
+    color: $white;
+  }
+
+  label {
+    &:first-of-type {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:last-of-type {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+.radioBox {
+  display: inline-block;
+  position: relative;
+
+  &.smlabel {
+    label {
+      padding: 2px 10px;
+      @include fontSize(13px);
+
+    }
+  }
+
+  label {
+    padding: 5px 20px;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    color: #000;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    @include fontSize(15px);
+    // @include box-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
+    @include border-radius(10px);
+    transition: color 200ms ease-in;
+    overflow: hidden;
+    margin: 0px;
+    border: 1px solid $primary;
+
+    &:before {
+      width: 10px;
+      height: 10px;
+      @include border-radius(50%);
+      content: "";
+      background-color: $primary;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale3d(1, 1, 1);
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &:hover {
+      background-color: rgba($primary, 0.3);
+    }
+  }
+
+  input:checked~label {
+    color: #fff;
+
+    p {
+      color: #fff;
+    }
+
+    //@include box-shadow(0px 0px 10px rgba($theme-main, 0.5));
+
+    &:before {
+      transform: translate(-50%, -50%) scale3d(56, 56, 1);
+      opacity: 1;
+    }
+  }
+
+  input {
+    display: none;
+  }
+}
+.ncb{
+  position: relative;
+}
+.previousncb {
+  // @include position(absolute, $left: 12px, $top: 52px);
+  @include abs-position(62px, null, null, 12px);
+  @include border-radius(0px 0px 10px 10px);
+  @include box-shadow(0px 8px 8px rgba($black, 0.1));
+  background: $white;
+  padding: 10px 10px 5px;
+  width: 190px;
+  z-index: 9;
+
+  &.travel {
+    width: 250px !important;
+  }
+
+  p {
+    @include fontSize(11px !important);
+    color: $primary;
+    margin-bottom: 8px;
+  }
+
+  .styled-input {
+    transform: scale(0.92);
+
+    .minus {
+      // @include position(absolute, $right: 2px, $top: 19px);
+      @include abs-position(19px, 2px, null, null);
+      color: $secondary;
+      z-index: 9;
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
+
+  .okbtn {
+    background: $primary;
+    color: $white;
+  }
+}

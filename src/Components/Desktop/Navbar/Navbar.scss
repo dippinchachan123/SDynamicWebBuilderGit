@@ -1,0 +1,48 @@
+@import '../../../mixins.scss';
+
+#{$navbar} {
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    height: 70px;
+    padding: 15px 12px;
+    @include position(fixed, $top:0px, $left:0px);
+    width: 100%;
+    z-index: 991;
+    .MuiGrid2-container {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        h6 {
+            span {
+                font-weight: 400;
+            }
+        }
+        .navLinks{
+            display: flex;
+            align-items: center;
+            li{
+                margin-left: 30px;
+                .navitems{
+                    @include fontSize(14px);
+                    line-height: 13px;
+                    font-weight: 400;
+                    color: $black;
+                }
+                .login-btn {
+                    font-family: 'Gotham';
+                    font-style: normal;
+                    font-weight: 400;
+                    @include fontSize(14px);
+                    line-height: 13px;
+                    @include border-radius(40px);
+                    color: #fff;
+                    padding: 10px 13px 10px 13px;
+                    background: $primary;
+                    margin-left: 25px;
+                    text-transform: capitalize;
+                }
+            }
+            
+        }
+    }
+}

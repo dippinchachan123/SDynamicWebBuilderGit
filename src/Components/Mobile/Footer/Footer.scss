@@ -1,0 +1,84 @@
+@import './../../../mixins.scss';
+
+.footer{
+    .footer-top {
+        padding: 34px 23px;
+        background: $primary;
+
+        p {
+            @include fontSize(14px);
+            line-height: 20px;
+            font-weight: 400;
+            color: $white;
+            text-align: center;
+            margin: 24px 0 40px;
+        }
+
+        h4 {
+            @include fontSize(14px);
+            line-height: 27px;
+            font-weight: 800;
+            color: $primary;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h6 {
+            @include fontSize(18px);
+            line-height: 17px;
+            font-weight: 700;
+            color: #F2F2F2;
+            margin-bottom: 20px
+        }
+
+        .product_list {
+            padding-bottom: 40px;
+
+            li {
+                @include fontSize(12px);
+                line-height: 30px;
+                font-weight: 400;
+                color: $white;
+
+                a {
+                    @include fontSize(12px);
+                    line-height: 30px;
+                    font-weight: 400;
+                    color: $white;
+                    margin-bottom: 0px;
+                }
+            }
+
+            &.pb-20 {
+                padding-bottom: 20px;
+            }
+        }
+
+        .social_sites {
+            display: flex;
+
+            li {
+                margin-right: 20px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding: 23px 46px;
+        background: $primary;
+        opacity: 0.9;
+
+        .copyrighjt_p {
+            @include fontSize(10px);
+            line-height: 24px;
+            font-weight: 400;
+            color: $white;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+    }
+}

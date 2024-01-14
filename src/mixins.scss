@@ -1,0 +1,111 @@
+// Color Variables
+$primary: #24488C;
+$secondary: #FAA51C;
+$white: #ffffff;
+$black: #000000;
+$theme-secondary: #F47521;
+$gray: #999999;
+
+// / Color Variables
+$primary-color: #3569B6;
+$primary-light: #E5E7FE;
+$blue-light: #F1F6FF;
+$grey-light: #828282;
+$grey-dark: #3A4855;
+$primary-red: #EB5757;
+$primary-orange: #FC6509;
+$white: #ffffff;
+$text-light: #ddd;
+$text-grey: #999;
+$bg-grey: #333;
+$bg-dark: #171b1e;
+$pure-dark: #000;
+$black: #000;
+
+// Class Variables
+$homePage: ".homePage";
+$navbar: ".navbar";
+$product: ".product";
+$policy: ".policy";
+$modal: ".modal";
+$filter: ".filter";
+
+/*--------------Mixins------------------*/
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin border-radius($radius: none) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin appearance() {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  //font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin abs-position($top, $right, $bottom, $left) {
+  // @include abs-position(10px, 10px, auto, auto);
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// Theme Color Change
+$themes: (
+  dark: (
+    // card-bg: $bg--card--rahul,
+  ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
